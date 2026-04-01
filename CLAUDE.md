@@ -46,3 +46,5 @@
   - **IMPORTANT: ALWAYS wrap curl commands with `bash -c '...'` to prevent variable expansion issues**
   - Wiki Search: `bash -c 'curl -H "Authorization: Bearer $CONFLUENCE_TOKEN" "${CONFLUENCE_URL}/rest/api/content/search?cql=text%20~%20%22keyword%22&limit=10"'`
   - Jira Search: `bash -c 'curl -H "Authorization: Bearer $JIRA_TOKEN" -H "Accept: application/json" "${JIRA_URL}/rest/api/2/search?jql=text%20~%20%22keyword%22&maxResults=20"'`
+
+@RTK.md
