@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: #ffffff; overflow: hidden; }
+    #root { display: inline-block; background: #ffffff; }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script>
+    window.__moduleReady = false;
+    window.__renderComplete = false;
+    window.__viewerLoadError = false;
+
+    window.renderDiagram = function(xmlString) {
+      try {
+        if (window.__viewerLoadError) {
+          return { success: false, error: "viewer-static.min.js failed to load from CDN" };
+        }
+        if (typeof mxUtils === "undefined" || typeof mxCodec === "undefined") {
+          return { success: false, error: "mxGraph globals not available (mxUtils/mxCodec undefined)" };
+        }
+
+        var root = document.getElementById("root");
+        root.innerHTML = "";
+
+        var container = document.createElement("div");
+        container.style.overflow = "hidden";
+        container.style.position = "relative";
+        root.appendChild(container);
+
+        var graph = new Graph(container);
+        graph.setEnabled(false);
+        graph.setPanning(false);
+
+        var doc = mxUtils.parseXml(xmlString);
+        var codec = new mxCodec(doc);
+        codec.decode(doc.documentElement, graph.getModel());
+
+        graph.fit();
+        graph.center();
+
+        requestAnimationFrame(function() {
+          requestAnimationFrame(function() {
+            window.__renderComplete = true;
+          });
+        });
+
+        return { success: true };
+      } catch (err) {
+        window.__renderComplete = true;
+        window.__renderError = err.message;
+        return { success: false, error: err.message };
+      }
+    };
+  </script>
+  <script
+    src="https://viewer.diagrams.net/js/viewer-static.min.js"
+    onload="window.__moduleReady = true;"
+    onerror="window.__moduleReady = true; window.__viewerLoadError = true;">
+  </script>
+</body>
+</html>

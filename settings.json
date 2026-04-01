@@ -1,9 +1,44 @@
 {
-  "enabledPlugins": {
-    "swift-lsp@claude-plugins-official": true
-  },
   "permissions": {
-    "allow": ["Bash", "Read", "Glob", "Grep", "WebFetch", "WebSearch"],
-    "ask": ["Edit", "Write"]
+    "allow": [
+      "Bash(*)",
+      "Glob(*)",
+      "Grep(*)",
+      "Read(*)",
+      "WebFetch(*)",
+      "WebSearch(*)",
+      "mcp__*",
+      "mcp__pencil"
+    ]
+  },
+  "model": "sonnet[1m]",
+  "hooks": {
+    "Stop": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude/hooks/auto-sync.sh"
+          }
+        ]
+      }
+    ]
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "node /Users/user/.claude/statusline.mjs"
+  },
+  "enabledPlugins": {
+    "swift-lsp@claude-plugins-official": true,
+    "superpowers@superpowers-marketplace": true
+  },
+  "extraKnownMarketplaces": {
+    "superpowers-marketplace": {
+      "source": {
+        "source": "github",
+        "repo": "obra/superpowers-marketplace"
+      }
+    }
   }
 }

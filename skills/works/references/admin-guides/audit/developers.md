@@ -1,0 +1,128 @@
+---
+source: https://help.worksmobile.com/ko/admin-guides/audit/developers/
+crawled_at: 2026-03-16
+last_modified: 2026-01-22
+---
+# Developers
+
+Developers 화면에서 수행된 Developer Console과 Delegated API의 작업 내역 및 수행자를 확인합니다.
+
+## Developer Console
+
+Admin 왼쪽 메뉴에서 '감사'를 선택해 메뉴를 펼친 후 'Developers'을 눌러 감사의 'Developers' 화면으로 이동합니다. 모바일에서는 ![](/wp-content/uploads/2024/04/icon-admin-mobile-menu.png) 버튼을 탭하면 메뉴가 나타납니다.
+
+### 모바일 앱
+
+- 이벤트 대상: 과업을 수행한 대상입니다.
+- 과업: 사용자가 수행한 과업입니다. 과업의 종류는 다음과 같습니다.
+  - 등록
+  - 수정
+  - 삭제
+  - 업로드
+  - Service Account 발급
+  - Service Account 삭제
+  - Private Key 발행
+  - WOFF 앱 등록
+  - WOFF 앱 수정
+  - WOFF 앱 삭제
+  - 권한 위임 앱 등록
+  - 권한 위임 앱 수정
+  - 권한 위임 앱 삭제
+- 사용자: 과업을 행한 구성원명과 메일주소입니다.
+- 날짜: 과업을 행한 날짜와 시각입니다.
+
+### PC 웹
+
+- 이벤트 대상 : 과업을 수행한 대상입니다.
+- 과업: 사용자가 수행한 과업입니다. 과업의 종류는 다음과 같습니다.
+  - 등록
+  - 수정
+  - 삭제
+  - 업로드
+  - Service Account 발급
+  - Service Account 삭제
+  - Private Key 발행
+  - WOFF 앱 등록
+  - WOFF 앱 수정
+  - WOFF 앱 삭제
+  - 권한 위임 앱 등록
+  - 권한 위임 앱 수정
+  - 권한 위임 앱 삭제
+- 사용자: 과업을 행한 구성원명과 메일주소입니다.
+- 날짜: 과업을 행한 날짜와 시각입니다.
+- IP 주소: 과업을 행한 네트워크의 IP주소입니다.
+- Console 메뉴: 이벤트가 발생한 Console 메뉴입니다.
+
+## Developer Console 감사 로그 검색
+
+Developer Console 감사 로그를 검색합니다.
+
+### 모바일 앱
+
+1. 'Developer Console' 화면에서 검색 아이콘을 탭하여 검색 화면을 펼친 후 조건을 입력합니다.
+2. '검색'을 탭하여 검색합니다.
+
+### PC 웹
+
+검색 기간으로 검색할 수 있고, 상세를 선택하여 동시에 여러 조건을 지정한 검색도 가능합니다.
+
+1. 'Developer Console' 화면에서 '기간'을 선택합니다. '상세'를 클릭하면 동시에 여러 항목을 지정하여 검색할 수 있습니다.
+2. '검색'을 클릭하여 검색합니다.
+
+## Developer Console 감사 로그 다운로드
+
+조회한 감사 로그를 다운로드합니다.
+
+1. 'Developer Console' 화면에서 검색을 이용해 다운로드할 내용을 화면에 노출합니다.
+2. 오른쪽 상단의 '다운로드'를 눌러 다운로드를 요청합니다.
+3. 왼쪽 메뉴의 '로그 다운로드'를 눌러 이동합니다.
+4. 요청한 로그를 찾아 파일을 다운로드 받습니다.
+
+## Delegated API
+
+1. Admin 왼쪽 메뉴에서 '감사'를 선택해 메뉴를 펼친 후 'Developers'을 눌러 감사의 'Developers' 화면으로 이동합니다. 모바일에서는 ![](/wp-content/uploads/2024/04/icon-admin-mobile-menu.png) 버튼을 탭하면 메뉴가 나타납니다.
+2. 'Delegated API'을 선택하여 'Delegated API' 화면으로 이동합니다.
+
+### 모바일 앱
+
+- API URL: 호출한 API URL입니다.
+- HTTP Method: API 호출 시 요청한 HTTP Method 입니다.
+- 성공여부: 과업의 성공여부입니다.
+- 날짜: 과업을 행한 날짜와 시각입니다.
+
+### PC 웹
+
+- API URL: 호출한 API URL입니다.
+- HTTP Method: API 호출 시 요청한 HTTP Method 입니다.
+- 성공여부: 과업의 성공여부입니다.
+- 사용자: API를 호출한 Service Account입니다.
+- 대상: Service Account가 API 호출 시 권한을 위임받은 구성원입니다.
+- 날짜: 과업을 행한 날짜와 시각입니다.
+- IP 주소: 과업을 행한 네트워크의 IP주소입니다.
+
+## Delegated API 감사 로그 검색
+
+Delegated API 감사 로그를 검색합니다.
+
+### 모바일 앱
+
+1. 'Delegated API' 화면에서 검색 아이콘을 탭하여 검색 화면을 펼친 후 조건을 입력합니다.
+2. '검색'을 탭하여 검색합니다.
+
+### PC 웹
+
+검색 기간으로 검색할 수 있고, 상세를 선택하여 동시에 여러 조건을 지정한 검색도 가능합니다.
+
+1. 'Delegated API' 화면에서 '기간'을 선택합니다. '상세'를 클릭하면 동시에 여러 항목을 지정하여 검색할 수 있습니다.
+2. '검색'을 클릭하여 검색합니다.
+
+## Delegated API 감사 로그 다운로드
+
+조회한 감사 로그를 다운로드합니다.
+
+1. 1. 'Delegated API' 화면에서 검색을 이용해 다운로드할 내용을 화면에 노출합니다.
+   2. 오른쪽 상단의 '다운로드'를 눌러 다운로드를 요청합니다.
+   3. 왼쪽 메뉴의 '로그 다운로드'를 눌러 이동합니다.
+   4. 요청한 로그를 찾아 파일을 다운로드 받습니다.
+
+공공용 네이버웍스에서는 일부 기능이 제한됩니다. 자세한 내용은 [네이버웍스 기능 소개서](https://gov-naverworks.com/naver-works-function-list/)를 확인해주세요.
