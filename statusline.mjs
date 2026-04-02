@@ -155,14 +155,35 @@ function getToken() {
     return process.env.CLAUDE_CODE_OAUTH_TOKEN;
 
   if (platform() === "darwin") {
+    // Find all "Claude Code-credentials*" keychain entries and pick the active one.
+    // Claude Code stores per-account tokens with a suffix (e.g. "-eb165e85").
+    // Prefer the entry whose token matches the currently active Claude Code session
+    // by checking which service name is used by the running process, falling back to
+    // the most-recently-modified entry.
     try {
-      const raw = execFileSync(
+      const dump = execFileSync(
         "security",
-        ["find-generic-password", "-s", "Claude Code-credentials", "-w"],
+        ["dump-keychain"],
         { encoding: "utf8", timeout: 3000, stdio: ["pipe", "pipe", "pipe"] }
-      ).trim();
-      const token = JSON.parse(raw)?.claudeAiOauth?.accessToken;
-      if (token) return token;
+      );
+      const serviceNames = [...dump.matchAll(/"svce"<blob>="(Claude Code-credentials[^"]*)"/g)]
+        .map(m => m[1]);
+
+      // Prefer suffix entries over the bare name (suffix = account-specific)
+      const suffixed = serviceNames.filter(s => s !== "Claude Code-credentials");
+      const ordered = [...suffixed, ...serviceNames.filter(s => s === "Claude Code-credentials")];
+
+      for (const svc of ordered) {
+        try {
+          const raw = execFileSync(
+            "security",
+            ["find-generic-password", "-s", svc, "-w"],
+            { encoding: "utf8", timeout: 3000, stdio: ["pipe", "pipe", "pipe"] }
+          ).trim();
+          const parsed = JSON.parse(raw)?.claudeAiOauth;
+          if (parsed?.accessToken) return parsed.accessToken;
+        } catch {}
+      }
     } catch {}
   }
 
