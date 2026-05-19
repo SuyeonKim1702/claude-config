@@ -1,6 +1,6 @@
 ---
 name: commit-message
-description: Use when the user wants a commit message drafted from the current changeset — staged or unstaged — without actually committing. Triggers on "커밋 메시지 작성해줘", "커밋 메시지", "메시지만 써줘", "스테이지 커밋 메시지", "언스테이지 커밋 메시지", "write commit message", "draft commit message", "commit msg". Reads the diff, surveys recent commit style, outputs a message ready to paste into `git commit -m`. Does NOT run `git commit`. For full commit + PR flow on OSS use `commit-pr` instead.
+description: Use when the user wants a commit message drafted from the current changeset — staged or unstaged — without actually committing. Triggers on "커밋 msg", "커밋 메시지", "커밋 메시지 작성해줘", "메시지만 써줘", "스테이지 커밋 메시지", "언스테이지 커밋 메시지", "commit msg", "write commit message", "draft commit message". Reads the diff, surveys recent commit style, outputs a message ready to paste into `git commit -m`. Does NOT run `git commit`. For full commit + PR flow on OSS use `commit-pr` instead.
 ---
 
 # Commit Message Writer
