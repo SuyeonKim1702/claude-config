@@ -1,6 +1,6 @@
 ---
 name: commit-message
-description: Use when the user wants a commit message drafted from the current changeset — staged or unstaged — without actually committing. Triggers on "커밋 msg", "커밋 메시지", "커밋 메시지 작성해줘", "메시지만 써줘", "스테이지 커밋 메시지", "언스테이지 커밋 메시지", "commit msg", "write commit message", "draft commit message". Reads the diff, surveys recent commit style, outputs a message ready to paste into `git commit -m`. Does NOT run `git commit`. For full commit + PR flow on OSS use `commit-pr` instead.
+description: Use when the user wants a commit message drafted from the current changeset — staged or unstaged — without actually committing. Triggers on "스커메" (= staged 커밋 메시지), "언스커메" (= unstaged 커밋 메시지), "커밋 msg", "커밋 메시지", "커밋 메시지 작성해줘", "메시지만 써줘", "스테이지 커밋 메시지", "언스테이지 커밋 메시지", "commit msg", "write commit message", "draft commit message". Reads the diff, surveys recent commit style, outputs a message ready to paste into `git commit -m`. Does NOT run `git commit`. For full commit + PR flow on OSS use `commit-pr` instead.
 ---
 
 # Commit Message Writer
@@ -33,6 +33,13 @@ git diff --stat
 | Nothing | Tell the user there's nothing to summarize and stop |
 
 If the user's request already specifies ("스테이지에 있는…", "언스테이지…", "방금 add한 거", etc.), honor that and skip the question.
+
+**Shortcut triggers — area is implicit, never ask:**
+
+| Shortcut | Meaning | Action |
+|---|---|---|
+| `스커메` | 스테이지 커밋 메시지 | Use staged only (`git diff --staged`). If staged is empty, report that and stop — do NOT fall back to unstaged. |
+| `언스커메` | 언스테이지 커밋 메시지 | Use unstaged only (`git diff`). If unstaged is empty, report that and stop — do NOT fall back to staged. |
 
 ### 3. Read the diff
 
